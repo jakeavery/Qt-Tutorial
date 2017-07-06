@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
     QFont courierFont ("Courier", 24, 96, true);
     button.setFont(courierFont);
 
-    QIcon materialIcon ("D:/icon.png");
+    QIcon materialIcon ("D:/Qt-Tutorial/HelloWorld/img/icon.png");
     button.setIcon(materialIcon);
 
     button.show();
