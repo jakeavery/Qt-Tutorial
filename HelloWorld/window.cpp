@@ -14,4 +14,20 @@ Window::Window(QWidget *parent) : QWidget(parent)
 
     // Make the connection
     connect(theButton, SIGNAL (clicked()), QApplication::instance(), SLOT (quit()));
+
+    // Create progress bar
+    progressBar = new QProgressBar(this);
+    progressBar->setRange(0, 100);
+    progressBar->setValue(0);
+    progressBar->setGeometry(0, 0, 180, 30);
+
+    // Create a horizontal slider
+    slider = new QSlider(this);
+    slider->setOrientation(Qt::Horizontal);
+    slider->setRange(0, 100);
+    slider->setValue(0);
+    slider->setGeometry(320, 0, 180, 30);
+
+    // Slider -> progress bar connection
+    connect(slider, SIGNAL (valueChanged(int)), progressBar, SLOT (setValue(int)));
 }
