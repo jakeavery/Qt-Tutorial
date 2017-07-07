@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QProgressBar>
 #include <QSlider>
+#include <QButtonGroup>
+#include <QRadioButton>
 
 class QPushButton;
 class QProgressBar;
@@ -23,6 +25,10 @@ private:
     QPushButton *counterButton;
     QProgressBar *progressBar;
     QSlider *slider;
+    QRadioButton *button1;
+    QRadioButton *button2;
+    QRadioButton *button3;
+    QButtonGroup *buttonGroup;
 signals:
     void counterReached();
 public slots:

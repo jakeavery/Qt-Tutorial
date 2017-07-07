@@ -1,7 +1,6 @@
 #include "window.h"
 
 #include <QApplication>
-#include <QPushButton>
 
 Window::Window(QWidget *parent) : QWidget(parent)
 {
@@ -39,6 +38,20 @@ Window::Window(QWidget *parent) : QWidget(parent)
     // Create counter button
     counterButton = new QPushButton("0", this);
     counterButton->setGeometry(100, 100, 50, 50);
+
+    // Create radio button group
+    buttonGroup = new QButtonGroup(this);
+    // Create radio buttons
+    button1 = new QRadioButton(this);
+    button2 = new QRadioButton(this);
+    button3 = new QRadioButton(this);
+    button1->setGeometry(400, 100, 20, 20);
+    button2->setGeometry(400, 150, 20, 20);
+    button3->setGeometry(400, 200, 20, 20);
+    // Add buttons to group
+    buttonGroup->addButton(button1);
+    buttonGroup->addButton(button2);
+    buttonGroup->addButton(button3);
 }
 
 // Clicked slot
