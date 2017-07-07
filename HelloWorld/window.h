@@ -15,6 +15,8 @@ class Window : public QWidget
     Q_OBJECT
 public:
     explicit Window(QWidget *parent = nullptr);
+private slots:
+    void slotButtonClicked(bool checked);
 private:
     QPushButton *theButton;
     QProgressBar *progressBar;

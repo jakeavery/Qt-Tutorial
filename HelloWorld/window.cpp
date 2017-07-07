@@ -11,9 +11,10 @@ Window::Window(QWidget *parent) : QWidget(parent)
     // Create and position button
     theButton = new QPushButton("Here it is", this);
     theButton->setGeometry(200, 100, 100, 50);
+    theButton->setCheckable(true);
 
     // Make the connection
-    connect(theButton, SIGNAL (clicked()), QApplication::instance(), SLOT (quit()));
+    connect(theButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonClicked(bool)));
 
     // Create progress bar
     progressBar = new QProgressBar(this);
@@ -30,4 +31,14 @@ Window::Window(QWidget *parent) : QWidget(parent)
 
     // Slider -> progress bar connection
     connect(slider, SIGNAL (valueChanged(int)), progressBar, SLOT (setValue(int)));
+}
+
+// Clicked slot
+void Window::slotButtonClicked(bool checked)
+{
+    if (checked) {
+        theButton->setText("Checked");
+    } else {
+        theButton->setText("Not Checked");
+    }
 }
