@@ -18,11 +18,13 @@ public:
 private slots:
     void slotButtonClicked(bool checked);
 private:
+    int buttonCounter;
     QPushButton *theButton;
+    QPushButton *counterButton;
     QProgressBar *progressBar;
     QSlider *slider;
 signals:
-
+    void counterReached();
 public slots:
 };
 

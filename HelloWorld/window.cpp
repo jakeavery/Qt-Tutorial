@@ -13,6 +13,10 @@ Window::Window(QWidget *parent) : QWidget(parent)
     theButton->setGeometry(200, 100, 100, 50);
     theButton->setCheckable(true);
 
+    // Set counter to 0
+    buttonCounter = 0;
+    connect(this, SIGNAL (counterReached()), QApplication::instance(), SLOT (quit()));
+
     // Make the connection
     connect(theButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonClicked(bool)));
 
@@ -31,6 +35,10 @@ Window::Window(QWidget *parent) : QWidget(parent)
 
     // Slider -> progress bar connection
     connect(slider, SIGNAL (valueChanged(int)), progressBar, SLOT (setValue(int)));
+
+    // Create counter button
+    counterButton = new QPushButton("0", this);
+    counterButton->setGeometry(100, 100, 50, 50);
 }
 
 // Clicked slot
@@ -40,5 +48,12 @@ void Window::slotButtonClicked(bool checked)
         theButton->setText("Checked");
     } else {
         theButton->setText("Not Checked");
+    }
+
+    buttonCounter ++;
+    counterButton->setText(QString::number(buttonCounter));
+
+    if (buttonCounter == 10) {
+        emit counterReached();
     }
 }
